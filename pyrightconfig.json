@@ -32,7 +32,7 @@
 
 
     "venvPath": "/Users/jburgess/.environs",
-    "venv": "ghost_writer",
+    "venv": "ghost",
 
     "reportMissingImports": true,
     "reportMissingTypeStubs": false,
