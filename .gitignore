@@ -100,3 +100,6 @@ ENV/
 
 # mypy
 .mypy_cache/
+/.dir-locals.el
+/.editorconfig
+/.readthedocs.yml
