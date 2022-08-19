@@ -1,0 +1,41 @@
+{
+    "include": [
+        "ghost_writer"
+    ],
+
+    "exclude": [
+        "ghost_writer/test",
+        "ghost_writer/data",
+        "**/__pycache__",
+        "build",
+	"docs",
+	"examples",
+	".eggs",
+	".git",
+	".github",
+	"versioneer.py"
+
+    ],
+    "ignore": [
+        "ghost_writer/test",
+        "ghost_writer/data",
+        "**/__pycache__",
+        "build",
+	"docs",
+	"examples",
+	".eggs",
+	".git",
+	".github",
+	"versioneer.py"
+
+    ],
+
+
+    "venvPath": "/Users/jburgess/.environs",
+    "venv": "ghost_writer",
+
+    "reportMissingImports": true,
+    "reportMissingTypeStubs": false,
+
+
+}
