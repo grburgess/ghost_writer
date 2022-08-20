@@ -65,7 +65,10 @@ _console_formatter = logging.Formatter(
 
 
 ghost_writer_console_log_handler = RichHandler(
-    level=ghost_writer_config.logging.level, rich_tracebacks=True, markup=True, console=console
+    level=ghost_writer_config.logging.level,
+    rich_tracebacks=True,
+    markup=True,
+    console=console,
 )
 ghost_writer_console_log_handler.setFormatter(_console_formatter)
 
