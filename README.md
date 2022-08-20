@@ -14,7 +14,7 @@ later be modified.
 ## Installation
 
 ```bash
-pip install ghost-writer
+pip install pyghost-writer
 ```
 
 ## Usage
