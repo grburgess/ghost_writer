@@ -4,7 +4,7 @@ from ghost_writer.scriptify import scriptify_python
 from ghost_writer.utils.package_data import get_path_of_data_file
 
 
-def simple_test():
+def test_generator():
 
     scriptify_python(get_path_of_data_file("script.py"))
 

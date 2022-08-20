@@ -14,7 +14,6 @@ later be modified.
 ## Installation
 
 ```bash
-
 pip install ghost-writer
 ```
 
@@ -38,7 +37,7 @@ In the terminal run the ```scriptify_py``` command on the script
 scriptify_py script.py
 ```
 
-Now you will have a new file called ```generated_script.py``` which contains a class that can generate that script which run:
+Now you will have a new file called ```generated_script.py``` which contains a class that can generate that script which can be run:
 
 ```python
 from ghost_writer import ScriptGenerator
