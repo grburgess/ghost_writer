@@ -125,7 +125,7 @@ def scriptify_python(file_name: str) -> None:
 
         indents.append(num_indents)
 
-    #directory = Path(file_name).parent
+    # directory = Path(file_name).parent
 
     name = Path(file_name).name
 
