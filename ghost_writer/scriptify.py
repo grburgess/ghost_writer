@@ -125,10 +125,14 @@ def scriptify_python(file_name: str) -> None:
 
         indents.append(num_indents)
 
-    script_gen = PythonMetaGenerator(
-        f"generated_{file_name}", gen_lines, indents
-    )
+    #directory = Path(file_name).parent
+
+    name = Path(file_name).name
+
+    out_file = f"generated_{name}"
+
+    script_gen = PythonMetaGenerator(out_file, gen_lines, indents)
 
     script_gen.write()
 
-    log.info(f"created generated_{file_name}")
+    log.info(f"{out_file}")

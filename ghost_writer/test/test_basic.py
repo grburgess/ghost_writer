@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import pytest
 
 from ghost_writer.scriptify import scriptify_python
