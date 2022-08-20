@@ -24,17 +24,16 @@ class Logging:
     level: str = "WARNING"
 
 
-
-
 @dataclass
 class ghost_writerConfig:
 
     logging: Logging = Logging()
 
 
-
 # Read the default config
-ghost_writer_config: ghost_writerConfig = OmegaConf.structured(ghost_writerConfig)
+ghost_writer_config: ghost_writerConfig = OmegaConf.structured(
+    ghost_writerConfig
+)
 
 # Merge with local config if it exists
 if _config_file.is_file():

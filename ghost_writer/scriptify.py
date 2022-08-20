@@ -2,6 +2,9 @@ from pathlib import Path
 from typing import List
 
 from .ghost_writer import ScriptGenerator
+from .utils.logging import setup_logger
+
+log = setup_logger(__name__)
 
 
 class PythonMetaGenerator(ScriptGenerator):
@@ -9,6 +12,20 @@ class PythonMetaGenerator(ScriptGenerator):
         self, file_name: str, lines: List[str], indents: List[int]
     ) -> None:
 
+        """
+
+        This will generate a generator from an
+        existing python script
+
+        :param file_name:
+        :type file_name: str
+        :param lines:
+        :type lines: List[str]
+        :param indents:
+        :type indents: List[int]
+        :returns:
+
+        """
         self._lines: List[str] = lines
         self._indents: List[int] = indents
 
@@ -31,11 +48,39 @@ class PythonMetaGenerator(ScriptGenerator):
 
         for line, indent in zip(self._lines, self._indents):
 
-            self._add_line(line, indent_level=indent + 2)
+            if line == "":
+
+                self._add_line("self._end_line()", indent_level=2)
+
+            else:
+
+                if indent == 0:
+
+                    arg = ""
+
+                else:
+
+                    arg = f", indent_level={indent}"
+
+                self._add_line(
+                    f"self._add_line('{line}'{arg})",
+                    indent_level=2,
+                )
 
 
 def scriptify_python(file_name: str) -> None:
 
+    """
+    Convert a python script into a generator that
+    can be used to parameterize the original script.
+
+    A file will created named generated_<filename>.py
+
+    :param file_name:
+    :type file_name: str
+    :returns:
+
+    """
     gen_lines: List[str] = []
     indents: List[int] = []
     with Path(file_name).open("r") as f:
@@ -46,7 +91,11 @@ def scriptify_python(file_name: str) -> None:
 
         tmp = []
 
+        indent_factor = 1
+
         if line.startswith(" "):
+
+            indent_factor = 4
 
             for char in line:
 
@@ -70,12 +119,16 @@ def scriptify_python(file_name: str) -> None:
 
                     break
 
-        num_indents = len(tmp)
+        num_indents = len(tmp) // indent_factor
 
-        gen_lines.append(line[num_indents:])
+        gen_lines.append(line[num_indents:].strip())
 
         indents.append(num_indents)
 
-    script_gen = PythonMetaGenerator(f"generated_{file_name}", gen_lines, indents)
+    script_gen = PythonMetaGenerator(
+        f"generated_{file_name}", gen_lines, indents
+    )
 
     script_gen.write()
+
+    log.info(f"created generated_{file_name}")

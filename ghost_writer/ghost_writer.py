@@ -24,7 +24,7 @@ class ScriptGenerator(ABC):
 
         for i in range(indent_level):
 
-            self._output += "\t"
+            self._output += " " * 4
 
         # add the line
 
